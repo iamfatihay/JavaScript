@@ -40,3 +40,4 @@ for(let i = 2 ; i < sayi; i++){
 
 }
 console.log(asal ? " asaldır" : "asal değildir");
+//! bu sekilde yazildiginda  asal==true gibi anlasilir, default olarak true alir
