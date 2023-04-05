@@ -118,3 +118,32 @@ console.log(onlar);  // 5
 const yuzler = Math.floor(number/100);
 console.log(yuzler);  //4
 
+//* KARSILASTIRMA ++++++++++++ //
+
+const sayi1=4;
+
+console.log(sayi1==4);//true
+console.log(sayi1===4);//true
+console.log(sayi1=="4");//true
+console.log(sayi1==="4");//false
+
+console.log(sayi1!=4);//false
+console.log(sayi1!="4");//false
+
+console.log(sayi1>4);
+console.log(sayi1<=4);
+
+
+//? TRUE
+console.log(Boolean(5));//true
+console.log(Boolean(-5));//true
+console.log(Boolean(-15.5));//true
+
+//? 5 falsy
+console.log(Boolean(0)); //false
+console.log(Boolean(null));//false
+console.log(Boolean(""));//false
+console.log(Boolean(undefined));//false
+console.log(Boolean(NaN));//false
+
+
