@@ -4,18 +4,18 @@
 
 // //************************ IF-ELSE ***********************
 
-//! Dort İslem Hesap Makinası
+//! Dort İslem Hesap Makinasi
 //!----------------------------------------------------------
 
-//? Prompt fonskiyonu ile console ortamında kullanıcıdan veri almak mümkündür.
+//? Prompt fonskiyonu ile console ortaminda kullanicidan veri almak mümkündür.
 console.log("-------------------------------------");
 console.log("==IF-ELSE IF== 4 Islem Hesap Makinesi");
 console.log("-------------------------------------");
 
-//!propmt a girilen değerler string olarak algılanır. sayı olsun istiyorsak önüne ya Number yazmalıyız ya da + koymalıyız
-// const sayi1 = +prompt("1.sayıyı giriniz");
+//!propmt a girilen değerler string olarak algilanir. sayi olsun istiyorsak önüne ya Number yazmaliyiz ya da + koymaliyiz
+// const sayi1 = +prompt("1.sayiyi giriniz");
 // const islem = prompt("+,-,*,/ işlemlerinden birini giriniz");
-// const sayi2 = Number(prompt("2. sayıyı giriniz"));
+// const sayi2 = Number(prompt("2. sayiyi giriniz"));
 
 // let sonuc = 0;
 
@@ -33,7 +33,7 @@ console.log("-------------------------------------");
 //     alert("payda 0 olamaz");
 //   }
 // } else {
-//   alert("yanlış işlem girdiniz");
+//   alert("yanliş işlem girdiniz");
 // }
 // console.log(sonuc);
 
@@ -57,9 +57,9 @@ console.log("-------------------------------------");
 console.log(" ==SWİTCH-CASE== 4 Islem Hesap Makinesi ");
 console.log("-------------------------------------");
 
-const s1 = +prompt("1.sayıyı giriniz");
+const s1 = +prompt("1.sayiyi giriniz");
 const islem2 = prompt("+,-,*,/ işlemlerinden birini giriniz");
-const s2 = Number(prompt("2. sayıyı giriniz"));
+const s2 = Number(prompt("2. sayiyi giriniz"));
 
 let sonuc2 = 0;
 
@@ -83,26 +83,26 @@ switch (islem2) {
     break;
 
   default:
-    alert("yanlış işlem girdiniz");
+    alert("yanliş işlem girdiniz");
     break;
 }
 console.log(` ${s1} ${islem2} ${s2} = ${sonuc2} `);
 
 //**************** */ TERNARY
 
-//? ornek: maasınız asgari ücretten düşük ve eşitse maaşınıza %25 zam yapılsın, değilse maaşınıza %10 zam yapılsın.
+//? ornek: maasiniz asgari ücretten düşük ve eşitse maaşiniza %25 zam yapilsin, değilse maaşiniza %10 zam yapilsin.
 
 const asgariUcret=8000
-const maas=+prompt("maasını gir")
+const maas=+prompt("maasini gir")
 
  const zamliMaas= maas<= asgariUcret ? maas*1.25 : maas*1.10  
 
 console.log(zamliMaas);
 
-//?Ornek:10 aylık maasınız borcunuzdan 5000 ve üstü kadar fazlaysa kredi alabilirsiniz, aksi durumda alamazsınız
+//?Ornek:10 aylik maasiniz borcunuzdan 5000 ve üstü kadar fazlaysa kredi alabilirsiniz, aksi durumda alamazsiniz
 
 const Schuld=+prompt("borcunuzu giriniz")
 
-const Gehalt= +prompt("Lütfen maasınızı giriniz")
+const Gehalt= +prompt("Lütfen maasinizi giriniz")
 
 console.log(Gehalt * 10 - Schuld >= 5000 ? "kredi alabilir 🥳" : "kredi alamaz 😞"); 
