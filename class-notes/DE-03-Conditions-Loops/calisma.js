@@ -1,4 +1,4 @@
-//* ****** ILK SORU *********++
+//* ****** ILK SORU ************************************************************
 // const not = +prompt("Notunuzu giriniz..: ")
 
 // if (not<0 || not>100) {
@@ -24,7 +24,7 @@
 // } 
 // else alert("Yanlis numara girdiniz!")
 
-//*  ******** 2.SORU ******+++
+//*  ******** 2.SORU ***************************************************************
 // const ay = prompt("Lütfen ay ismini giriniz:");
 
 // let siraNumarasi;
@@ -72,7 +72,7 @@
 
 // console.log(`${ay} ayi ${siraNumarasi}. siradadir.`);
 
-//*  ******** 3.SORU **********
+//*  ******** 3.SORU *************************************************************************
 
 // const sayi1 = +prompt("1.sayiyi giriniz: ")
 // const sayi2 = +prompt("2.sayiyi giriniz: ")
@@ -100,13 +100,13 @@
 // }
 // console.log(`Bu islemin("${islem}") sonucu: ${sonuc}`);
 
-//*  ******** 4.SORU **********
+//*  ******** 4.SORU *********************************************************************
 // const n = +prompt("Sayi giriniz:")
 // const cikti = n%2==0 ? "Bu bir cift sayidir" : "Bu bir tek sayidir"
 
 // console.log(cikti);
 
-//*  ******** 5.SORU **********
+//*  ******** 5.SORU *********************************************************************+
 //! 1-     °F = °C * 1.8 + 32
 //! 2-     °C = (°F − 32) × 5/9
 
