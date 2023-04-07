@@ -130,50 +130,67 @@
 //*  ************************* 2.ODEV ********************************************************
 //!  ************************* Question-1 **************************************
 
-// let notes=0 ;122
-// let counter=0 ;
-// let ask ;
+let notes=0 ;
+let counter=0 ;
+let ask ;
 
-// do {
-//     let input = +prompt("Please enter a note");
-//     notes += input
-//     counter++
-//     ask = prompt("Do you want to continue?(y/q)")
-    
-// } while (ask.toLowerCase() != "q");
+do {
+    let input = +prompt("Please enter a note");
+    notes += input
+    counter++
+    ask = prompt("Do you want to continue?(y/q)")
 
-// console.log("Average of notes entered: ", notes/counter);
+} while (ask.toLowerCase() != "q");
+
+console.log("Average of notes entered: ", notes/counter);
 
 //!  ************************* Question-2 **************************************
 
 //? : Tahmin Oyunu
-//* Program 1 ile 20 arasında rasgele bir sayı tutacak ve 
-//* kullanıcının bu sayıyı 5 kere(hak) de bilmesini isteyecektir. 
-//* Her yanlışta hakkını bir düşürecek ve ARTTIR/AZALT diyerek kullanıcıyı yönlendirecektir.
-//* Sonuç olarak kullanıcının hakkı 0 olursa "Üzgünüz bilemediniz" eğer bildi ise "Tebrikler  bildiniz" yazacaktır.
+//* Program 1 ile 20 arasinda rasgele bir sayi tutacak ve 
+//* kullanicinin bu sayiyi 5 kere(hak) de bilmesini isteyecektir. 
+//* Her yanlişta hakkini bir düşürecek ve ARTTIR/AZALT diyerek kullaniciyi yönlendirecektir.
+//* Sonuç olarak kullanicinin hakki 0 olursa "Üzgünüz bilemediniz" eğer bildi ise "Tebrikler  bildiniz" yazacaktir.
+//* Oyun sonunda tekrar oynamak isteyip istemedigi sorulacaktir.
 
-// const rastgele = Math.ceil(Math.random() * 20);
 
-// console.log(rastgele);
+function tahminOyunu() {
+    const rastgele = Math.ceil(Math.random() * 20);
+    console.log(rastgele);
+    let hak = 5;
 
-// let hak = 5;
+    while (hak > 0) {
+        const tahmin = +prompt("sayi tahmin ediniz");
+        hak--;
+        if (tahmin == rastgele) {
+            console.log("tebrikler bildiniz🥳");
+            let ask1 = prompt("Do you want to play again?(Y/N)");
+            if (ask1.toLowerCase() == "y") {
+                tahminOyunu()
+            } else {
+                alert("Thanks for your play!")
+                break;
+            }
+            break;// tahmin doğruysa ve ask1=="n" ise
+        } else if (tahmin < rastgele) {
+            console.log("ARTTIR📈");
+            console.log(hak + "hakkiniz kaldi");
+        } else {
+            console.log("AZALT📉");
+            console.log(hak + "hakkiniz kaldi");
+        }
+        if (hak == 0) {
+            console.log("üzgünüz bilemediniz");
+            ask1 = prompt("Do you want to play again?(Y/N)");
+            if (ask1.toLowerCase() == "y") {
+                tahminOyunu()
+            } else {
+                alert("Thanks for your play!")
+                break;
+            }
+        }
+    }
+}
+tahminOyunu()
 
-// while (hak > 0) {
-//   const tahmin = +prompt("sayı tahmin ediniz");
 
-//   hak--;
-
-//   if (tahmin == rastgele) {
-//     console.log("tebrikler bildiniz🥳");
-//     break;// tahmin doğruysa hak kım olduğu halde döngüden çıkılsın
-//   } else if (tahmin < rastgele) {
-//     console.log("ARTTIR📈");
-//     console.log(hak + "hakkınız kaldı");
-//   } else {
-//     console.log("AZALT📉");
-//     console.log(hak + "hakkınız kaldı");
-//   }
-//   if (hak == 0) {
-//     console.log("üzgünüz bilemediniz");
-//   }
-// }
