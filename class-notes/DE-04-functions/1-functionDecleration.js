@@ -8,15 +8,15 @@
 console.log("************ 1- FUNC DECLARATION *************");
 
 //*Örnek1:****************************************************************/
-//?Fonksiyonun tanımlanması
+//?Fonksiyonun tanimlanmasi
 
 // yazdir()
 
 function yazdir(){
 
-    console.log("e daha daha nasılsınız");
+    console.log("e daha daha nasilsiniz");
 }
- yazdir() // call veya invoke ( fonksiyonu çağırmak)
+ yazdir() // call veya invoke ( fonksiyonu çağirmak)
 
 //* */ Ornek2************PARAMETRELİ FONKSİYON********************
 function adYazdir(ad, ikinciAd, soyad){
@@ -30,7 +30,7 @@ adYazdir("kubilay", "ozlem","NİHAL")
 
 function yasHesapla(ad,tarih){
 
-    console.log(`benim adım ${ad} ve ben  ${2023-tarih} yasındayım` );
+    console.log(`benim adim ${ad} ve ben  ${2023-tarih} yasindayim` );
 return 2023-tarih
 }
 
@@ -45,9 +45,9 @@ console.log((ipek+yunus+fatih)/3);
 
 //* Örnek4: Parametreli, Dönüş değerli
 //**********************************************************/
-//! Function declaration yöntemi ile  fonksiyonun tanımlanması çağrılmasından önce veya sonra olabilir.
+//! Function declaration yöntemi ile  fonksiyonun tanimlanmasi çağrilmasindan önce veya sonra olabilir.
 
-//tek çift sorgulaması
+//tek çift sorgulamasi
 
  console.log(tekCiftSayi(5));  
  console.log(tekCiftSayi(50));  
