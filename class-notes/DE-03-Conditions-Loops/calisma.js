@@ -67,7 +67,7 @@
 //     siraNumarasi = 12;
 //     break;
 //   default:
-//     siraNumarasi = "Geçersiz ay ismi!";
+//     alert("Geçersiz ay ismi!")
 // }
 
 // console.log(`${ay} ayi ${siraNumarasi}. siradadir.`);
