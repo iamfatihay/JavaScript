@@ -44,3 +44,36 @@ menu();
 
 //   console.log(new Date().getHours());
 
+//*** */ Ornek4  silindirin hacmini hesapla
+
+// toFixed(a)=virgüllü bir sayıda, virgülden sonra istediğimiz adette (a) rakam görmemizi sağlar
+
+const hacimHesapla=(r,h)=> Math.PI*r*r*h;
+
+
+console.log(hacimHesapla(4,5));
+console.log(hacimHesapla(4,5).toFixed(3));
+
+
+
+//! ORNEK5: Girilen n. terimdeki  Fibonacci sayisını  yazdiran fonksiyonu dongu ile kodlayiniz.
+//? FIBONACCI terimleri:  1, 1, 2, 3, 5, 8, 13, 21, 34, ...
+
+const fibonacciNumber = (n) => {
+    let fiboSol = 1;
+    let fiboSag = 1;
+    let yeniFibo = 0;
+    let toplam = 2;
+  
+    for (let i = 1; i < n - 1; i++) {
+      yeniFibo = fiboSol + fiboSag;
+      fiboSol = fiboSag;
+      fiboSag = yeniFibo;
+      
+      toplam += fiboSag;
+    }
+  
+    return ` fiboSag: ${fiboSag} toplam: ${toplam}`;
+  };
+  
+  alert(fibonacciNumber(8));
