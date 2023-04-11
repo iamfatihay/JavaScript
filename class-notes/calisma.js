@@ -130,19 +130,19 @@
 //*  ************************* 2.ODEV ********************************************************
 //!  ************************* Question-1 **************************************
 
-let notes=0 ;
-let counter=0 ;
-let ask ;
+// let notes=0 ;
+// let counter=0 ;
+// let ask ;
 
-do {
-    let input = +prompt("Please enter a note");
-    notes += input
-    counter++
-    ask = prompt("Do you want to continue?(y/q)")
+// do {
+//     let input = +prompt("Please enter a note");
+//     notes += input
+//     counter++
+//     ask = prompt("Do you want to continue?(y/q)")
 
-} while (ask.toLowerCase() != "q");
+// } while (ask.toLowerCase() != "q");
 
-console.log("Average of notes entered: ", notes/counter);
+// console.log("Average of notes entered: ", notes/counter);
 
 //!  ************************* Question-2 **************************************
 
@@ -154,43 +154,69 @@ console.log("Average of notes entered: ", notes/counter);
 //* Oyun sonunda tekrar oynamak isteyip istemedigi sorulacaktir.
 
 
-function tahminOyunu() {
-    const rastgele = Math.ceil(Math.random() * 20);
-    console.log(rastgele);
-    let hak = 5;
+// function tahminOyunu() {
+//     const rastgele = Math.ceil(Math.random() * 20);
+//     console.log(rastgele);
+//     let hak = 5;
 
-    while (hak > 0) {
-        const tahmin = +prompt("sayi tahmin ediniz");
-        hak--;
-        if (tahmin == rastgele) {
-            console.log("tebrikler bildiniz🥳");
-            let ask1 = prompt("Do you want to play again?(Y/N)");
-            if (ask1.toLowerCase() == "y") {
-                tahminOyunu()
-            } else {
-                alert("Thanks for your play!")
-                break;
-            }
-            break;// tahmin doğruysa ve ask1=="n" ise
-        } else if (tahmin < rastgele) {
-            console.log("ARTTIR📈");
-            console.log(hak + "hakkiniz kaldi");
-        } else {
-            console.log("AZALT📉");
-            console.log(hak + "hakkiniz kaldi");
-        }
-        if (hak == 0) {
-            console.log("üzgünüz bilemediniz");
-            ask1 = prompt("Do you want to play again?(Y/N)");
-            if (ask1.toLowerCase() == "y") {
-                tahminOyunu()
-            } else {
-                alert("Thanks for your play!")
-                break;
-            }
-        }
+//     while (hak > 0) {
+//         const tahmin = +prompt("sayi tahmin ediniz");
+//         hak--;
+//         if (tahmin == rastgele) {
+//             console.log("tebrikler bildiniz🥳");
+//             let ask1 = prompt("Do you want to play again?(Y/N)");
+//             if (ask1.toLowerCase() == "y") {
+//                 tahminOyunu()
+//             } else {
+//                 alert("Thanks for your play!")
+//                 break;
+//             }
+//             break;// tahmin doğruysa ve ask1=="n" ise
+//         } else if (tahmin < rastgele) {
+//             console.log("ARTTIR📈");
+//             console.log(hak + "hakkiniz kaldi");
+//         } else {
+//             console.log("AZALT📉");
+//             console.log(hak + "hakkiniz kaldi");
+//         }
+//         if (hak == 0) {
+//             console.log("üzgünüz bilemediniz");
+//             ask1 = prompt("Do you want to play again?(Y/N)");
+//             if (ask1.toLowerCase() == "y") {
+//                 tahminOyunu()
+//             } else {
+//                 alert("Thanks for your play!")
+//                 break;
+//             }
+//         }
+//     }
+// }
+// tahminOyunu()
+//*  ************************* 3.Assignment *******************************************************
+//!  ************************* Question-1 **************************************
+const ucgen=(t,h)=> (t*h/2)
+console.log(ucgen(5,6));  //answer=15
+//!  ************************* Question-2 **************************************
+const square=(x)=>x*x
+const cube=(x)=>x**3
+const power=(x,y)=>x**y
+
+const calculation=(calculation,x,y)=>{
+    let result;
+    if (calculation=="square") {
+        result=square(x)
+    } else if(calculation=="cube") {
+        result=cube(x)
+    }else if(calculation=="power"){
+        result=power(x,y)
     }
+    return result
 }
-tahminOyunu()
-
-
+console.log(calculation("square",6));   // 36
+console.log(calculation("cube",3));    // 27
+console.log(calculation("power",2,3));   // 8
+//!  ************************* Question-3 **************************************
+const leapYear=function(year) {
+    return year%4==0 && (year%100!=0 || year%400==0) ? `${year} is a leap year.` : `${year} is not a leap year.`
+}
+console.log(leapYear(100),leapYear(4),leapYear(2000));  // (false,true,true)
