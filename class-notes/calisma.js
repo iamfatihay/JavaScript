@@ -192,31 +192,66 @@
 //     }
 // }
 // tahminOyunu()
-//*  ************************* 3.Assignment *******************************************************
-//!  ************************* Question-1 **************************************
-const ucgen=(t,h)=> (t*h/2)
-console.log(ucgen(5,6));  //answer=15
-//!  ************************* Question-2 **************************************
-const square=(x)=>x*x
-const cube=(x)=>x**3
-const power=(x,y)=>x**y
+// //*  ************************* 3.Assignment *******************************************************
+// //!  ************************* Question-1 **************************************
+// const ucgen=(t,h)=> (t*h/2)
+// console.log(ucgen(5,6));  //answer=15
+// //!  ************************* Question-2 **************************************
+// const square=(x)=>x*x
+// const cube=(x)=>x**3
+// const power=(x,y)=>x**y
 
-const calculation=(calculation,x,y)=>{
-    let result;
-    if (calculation=="square") {
-        result=square(x)
-    } else if(calculation=="cube") {
-        result=cube(x)
-    }else if(calculation=="power"){
-        result=power(x,y)
-    }
-    return result
+// const calculation=(calculation,x,y)=>{
+//     let result;
+//     if (calculation=="square") {
+//         result=square(x)
+//     } else if(calculation=="cube") {
+//         result=cube(x)
+//     }else if(calculation=="power"){
+//         result=power(x,y)
+//     }
+//     return result
+// }
+// console.log(calculation("square",6));   // 36
+// console.log(calculation("cube",3));    // 27
+// console.log(calculation("power",2,3));   // 8
+// //!  ************************* Question-3 **************************************
+// const leapYear=function(year) {
+//     return year%4==0 && (year%100!=0 || year%400==0) ? `${year} is a leap year.` : `${year} is not a leap year.`
+// }
+// console.log(leapYear(100),leapYear(4),leapYear(2000));  // (false,true,true)
+// //*  ************************* TeamWork *******************************************************
+
+const isString = x =>{ 
+    return (typeof x == 'string') ? 'Input is a string' : 'Input is not a string' 
+} 
+ 
+console.log(isString('Clarusway')) 
+console.log(isString(2019)) 
+//! **********************************************************************
+let avengers = ['Iron Man', 'Captain America', 'Black Widow', 'Hulk', 'Hawkeye'] 
+
+const newArray1 = avengers.slice(-2)
+console.log(newArray1);
+
+const newArray2 = avengers.slice(2)
+console.log(newArray2);
+
+const newArray3 = avengers.slice()
+console.log(newArray3);
+//! **********************************************************************
+let avengers2 = ['Iron Man', 'Captain America', 'Black Widow', 'Hulk', 'Hawkeye'] 
+
+console.log(avengers2.splice(2,1,'Thor', 'Hawkeye'));
+
+//! **********************************************************************
+
+const capitalizeFirstLetter = (inputString) => { 
+    let newText = inputString.split(" ");
+    // console.log(newText); 
+    for (i in newText) { 
+      newText[i] = newText[i].charAt(0).toUpperCase() + newText[i].slice(1); 
+    } 
+    return newText.join(" ") 
 }
-console.log(calculation("square",6));   // 36
-console.log(calculation("cube",3));    // 27
-console.log(calculation("power",2,3));   // 8
-//!  ************************* Question-3 **************************************
-const leapYear=function(year) {
-    return year%4==0 && (year%100!=0 || year%400==0) ? `${year} is a leap year.` : `${year} is not a leap year.`
-}
-console.log(leapYear(100),leapYear(4),leapYear(2000));  // (false,true,true)
+console.log(capitalizeFirstLetter("Lorem ipsum Dolor sit amet, conde elit."))
