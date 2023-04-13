@@ -2,7 +2,7 @@
 // ?                DİZİLER (ARRAYS)
 // ?=========================================================
 
-//* Dizi Tanımlama
+//* Dizi Tanimlama
 //* ---------------------------------------------------------
 
 //! 1. YÖNTEM (Array Literal) - tercih edilen yöntem
@@ -12,7 +12,7 @@ const yaslar = [30, 24, 55, 78, 12];
 console.log(yaslar);
 console.log(yaslar.length);
 
-//!hata const keyword ü ile tanımlanmış bir diziyi tamamıyla değiştiremezsiniz, ancak tek tek değişikliğe izin verir
+//!hata const keyword ü ile tanimlanmiş bir diziyi tamamiyla değiştiremezsiniz, ancak tek tek değişikliğe izin verir
 // yaslar=[1,2,3,4]
 
 //! 2. YÖNTEM (Array Constructor)
@@ -20,7 +20,7 @@ console.log(yaslar.length);
 const cars = new Array("BMW", "Mercedes", "Volvo");
 console.log(cars);
 
-//!10 elemanlı bir Array tanımlama
+//!10 elemanli bir Array tanimlama
 const sayilar = new Array(10);
 
 console.log(sayilar);
@@ -54,15 +54,15 @@ console.log(isimler[7][2]);
 console.log(isimler[isimler.length-2][yaslar.length-3]);
 
 
-console.log(--isimler[7][2]);//elemanı 1 eksilttik
-console.log(isimler[7][2]);//kalıcı eksilmiş oldu
+console.log(--isimler[7][2]);//elemani 1 eksilttik
+console.log(isimler[7][2]);//kalici eksilmiş oldu
 
 
 // ?=========================================================
 // ?                DİZİYİ DEĞİŞTİREN METODLAR (MUTATOR)
 // ?=========================================================
 
-//*pop() dizinin son elemanını siler, yazdırırsak sildiği elemanı döndürür
+//*pop() dizinin son elemanini siler, yazdirirsak sildiği elemani döndürür
 
 const meyveler=["Elma", "Erik","Armut", "Muz","Kivi"]
 
@@ -71,34 +71,34 @@ meyveler.pop()
 console.log(meyveler);
 console.log(meyveler.pop());
 
-//*shift() dizinin ilk elemanını siler, yazdırırsak sildiği elemanı döndürür
+//*shift() dizinin ilk elemanini siler, yazdirirsak sildiği elemani döndürür
 
 console.log(meyveler.shift());
 console.log(meyveler);
 
-//*push() dizinin sonuna eleman ekler, yazdırırsak dizinin güncel eleman sayısını döndürür
+//*push() dizinin sonuna eleman ekler, yazdirirsak dizinin güncel eleman sayisini döndürür
 
 console.log(meyveler.push("Çilek", "Kavun", "karpuz"));
 console.log(meyveler);
 
-//*unshift() dizinin başına eleman ekler, yazdırırsak dizinin güncel eleman sayısını döndürür
+//*unshift() dizinin başina eleman ekler, yazdirirsak dizinin güncel eleman sayisini döndürür
 
 console.log(meyveler.unshift("Ayva"));
 console.log(meyveler);
 
 
-//*reverse() dizinin tamamını ters çevirir
+//*reverse() dizinin tamamini ters çevirir
 meyveler.reverse()
 console.log(meyveler);
 
 console.log(meyveler[3].split("").reverse());
 
-// dizinin 3. string elemanını Array e çevirip reverse metodu ile ters dönmüş dizi yaptık. tekrar ters dönmüş dizi olsun istersek join("") kullanabiliriz
+// dizinin 3. string elemanini Array e çevirip reverse metodu ile ters dönmüş dizi yaptik. tekrar ters dönmüş dizi olsun istersek join("") kullanabiliriz
 console.log(meyveler);
 
 //*splice() 1. parametre dizinin eleman ekleyeceğimiz index ini belirtir
-//*2. parametre=0 ise belirttiğim index teki elemanı sağa ittir, artık orada yeni yazdığım olsun
-//*2.parametre=1 ise belirttiğim index teki elemanı sil üstüne yaz
+//*2. parametre=0 ise belirttiğim index teki elemani sağa ittir, artik orada yeni yazdiğim olsun
+//*2.parametre=1 ise belirttiğim index teki elemani sil üstüne yaz
 
 
 // ["karpuz", "Kavun", "Çilek", "Armut", "Erik", "Ayva"];
@@ -107,3 +107,66 @@ console.log(meyveler);
 
 meyveler.splice(1,1,"Ananas")//=meyveler[1]="Ananas"
 console.log(meyveler);
+
+
+//* sort(), string ifadelerde alfabetik siralar(ascii değerlerine göre)
+//* sort metodu diziyi iterasyona uğratir ve parametre olarak aldiği arrow fonksiyonunu (a-b>0 önce b yi yaz gibi) dizinin her bir elemanina uygular.
+//* Bu sayade küçük sayilar ile büyük sayilari yer değişirerek siralama işlemini gerçleştirir.
+meyveler.sort()
+console.log(meyveler);
+
+const number=[3,5,1,35,10,22,55,77,231]
+number.sort()
+console.log(number);
+
+number.sort((a,b)=>a-b)
+console.log(number);
+
+//? ===========================================================
+//?  DİZİ ERİŞİM METOTLARI (diziyi değiştirmezler)
+//? ===========================================================
+
+const sayilar1= [3,5,2,"2","uc",2,"bes",5,"6"]
+
+//* includes *********
+
+console.log(sayilar1.includes("5"));  //false
+console.log(sayilar1.includes(5));  //true
+
+//* indexof(), lastIndexOf() ************
+
+console.log(sayilar1.indexOf("2"));  // 3
+console.log(sayilar1.indexOf(2,3));  // 5
+// index i 3 ten sonraki 2 yi bul diyor
+console.log(sayilar1.lastIndexOf(5));  // 7
+// sondan baslayarak bakiyor, ilk gordugunu aliyor
+
+//* ORNEK *********
+//* kullanicidan sayi isteyin.
+//* girilen sayinin hem string hem number hali sayilar dizisinde var mi araştir, varsa index ini döndür.
+// const sayilar1 = [3, 5, 2, "2", "uc", 2, "bes", 5, "6"];
+
+const sayiString = prompt("lütfen bir sayi giriniz"); //"5"
+const sayiNumber = Number(sayiString); //5
+let varMi=false;
+
+if (sayilar1.includes(sayiString)) {
+  console.log(
+    "aradiğiniz sayinin String hali dizide var ve index i:",
+    sayilar1.indexOf(sayiString)
+  );
+  varMi=true
+}
+//  else console.log("aradiğiniz sayinin string hali bulunamadi");
+if (sayilar1.includes(sayiNumber)) {
+  console.log(
+    "aradiğiniz sayi dizide var ve index i:",
+sayilar1.indexOf(sayiNumber)
+  );
+  varMi=true
+}
+// else console.log("aradiğiniz sayinin number hali bulunamadi");
+
+if(!varMi){   //unlem yerine varMi==false da diyebilirdik
+  console.log("aradiğiniz sayi bulunamadi");
+}
