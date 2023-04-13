@@ -146,27 +146,86 @@ console.log(sayilar1.lastIndexOf(5));  // 7
 //* girilen sayinin hem string hem number hali sayilar dizisinde var mi araştir, varsa index ini döndür.
 // const sayilar1 = [3, 5, 2, "2", "uc", 2, "bes", 5, "6"];
 
-const sayiString = prompt("lütfen bir sayi giriniz"); //"5"
-const sayiNumber = Number(sayiString); //5
-let varMi=false;
+// const sayiString = prompt("lütfen bir sayi giriniz"); //"5"
+// const sayiNumber = Number(sayiString); //5
+// let varMi=false;
 
-if (sayilar1.includes(sayiString)) {
-  console.log(
-    "aradiğiniz sayinin String hali dizide var ve index i:",
-    sayilar1.indexOf(sayiString)
-  );
-  varMi=true
-}
-//  else console.log("aradiğiniz sayinin string hali bulunamadi");
-if (sayilar1.includes(sayiNumber)) {
-  console.log(
-    "aradiğiniz sayi dizide var ve index i:",
-sayilar1.indexOf(sayiNumber)
-  );
-  varMi=true
-}
-// else console.log("aradiğiniz sayinin number hali bulunamadi");
+// if (sayilar1.includes(sayiString)) {
+//   console.log(
+//     "aradiğiniz sayinin String hali dizide var ve index i:",
+//     sayilar1.indexOf(sayiString)
+//   );
+//   varMi=true
+// }
+// //  else console.log("aradiğiniz sayinin string hali bulunamadi");
+// if (sayilar1.includes(sayiNumber)) {
+//   console.log(
+//     "aradiğiniz sayi dizide var ve index i:",
+// sayilar1.indexOf(sayiNumber)
+//   );
+//   varMi=true
+// }
+// // else console.log("aradiğiniz sayinin number hali bulunamadi");
 
-if(!varMi){   //unlem yerine varMi==false da diyebilirdik
-  console.log("aradiğiniz sayi bulunamadi");
-}
+// if(!varMi){   //unlem yerine varMi==false da diyebilirdik
+//   console.log("aradiğiniz sayi bulunamadi");
+// }
+
+//* join()
+//*-----------------------------------------------------------
+//? join, dizinin elamanlari birlestirip string hale cevirir.join("x")=>varolan virgül+boşluk sil,
+//? elemanların aralarına x koy(mesela join parantezinde boşluk yerine 2 varsa her eleman arasına 2 koy demek) 
+//* split(" ")=>string i boşluklardan ayırır,boşlukları silip virgül+boşluk yapar ve yeni dizi döndürür.orijinal diziyi değiştirmez
+
+console.log(sayilar1.join(","));
+console.log(sayilar1.join("A "));
+
+// const meyveler=["Elma", "Erik","Armut", "Muz","Kivi"]
+ //* dizinin 2.elemanini tersten string olarak yazdir
+
+ console.log(meyveler[2].split("").reverse().join(""));  // avyA
+
+//* toString()
+//*-----------------------------------------------------------
+//? toString fonksiyonu sadece dizinin elemanlarinin aralarina
+//? (virgul) koyarak birlestirir ve string yapar.
+
+console.log(sayilar1.toString());
+
+
+//* ********* SLICE *********
+const arabalar=["bmw","mercedes","audi","ferrari","lamborgini"]
+
+console.log(arabalar.slice(3));
+console.log(arabalar.slice(1,3));
+console.log(arabalar.slice()); //! diziyi kopyalamak icin de kullanilabilir
+
+const arabalar2=arabalar.slice();
+console.log(arabalar2);
+
+//* ********* CONCAT *********
+
+const ksiiler=["özlem","esra","nihal","fatih","hüseyin"]
+const rakamlar=[1,2,3,4,5,6]
+
+const birlesik=ksiiler.concat(rakamlar,true,"halit","emirhan",["irfan","yunus"],[["a","b","c"]])
+
+console.log(birlesik);
+
+//* every()
+//*-----------------------------------------------------------
+//? Tum diziyi itere eder ve aldigi callback fonksiyonuna gore
+//? test gerceklestirir.Tum elemanlar icin test basarili ise
+//? true aksi takdirde false deger dondurur.
+
+const yas=[18,23,35,44,57,89,15]
+console.log(yas.every((a)=>a>=18)); // false
+
+//* some()
+//*-----------------------------------------------------------
+//? Aldigi callback fonksiyonuna (bizim yazdığımız fonksiyon) gore test gerceklestirir.
+//? En az bir eleman icin bile test basarili ise true aksi
+//? takdirde false deger dondurur.
+
+console.log(yas.some((a)=>a>70)); // true
+console.log(yas.some((a)=>a>90)); // false
