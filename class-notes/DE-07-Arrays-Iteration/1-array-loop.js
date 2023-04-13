@@ -103,7 +103,7 @@ let araba1 = ""
 
 for (let item of arabalar) {
     araba1 += item
-    // araba1=araba1.concat(item)   alternatif cozum
+    // araba1=araba1.concat(item," ")   alternatif cozum,bosluklu bir sekilde de yapilabilir boyle
 }
 
 console.log(araba1);
