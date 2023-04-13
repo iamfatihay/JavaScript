@@ -65,3 +65,24 @@ console.log(pozitifler3);
 }
 
 dizilereAyir3()
+//* ======================================================
+//*                     ÖRNEKLER
+//* ======================================================
+//*-------------------------------------------------------
+//* SORU: Bir hayvanat bahçesinde bulunan hayvan türlerinin
+//* bir dizide saklandığını varsayalım.Bu hayvanları türüne
+//* göre aramamızı sağlayacak ve o türden kaç adet bulunduğunu
+//*  ana programa döndürecek fonksiyonu yazınız. 
+//*--------------------------------------------------------
+
+const animal=["fil", "aslan", "deve","fil", "kaplan","fil","deve", "aslan", "aslan", "aslan"]
+let sayac = 0
+const userAnimal=prompt("Lutfen bir hayvan adi giriniz: ")
+
+const findAnimal=()=>{
+    
+
+
+
+}
+findAnimal()
