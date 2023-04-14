@@ -119,3 +119,62 @@ console.log(degerler);
 const bir = tlFiyatlar.filter((a) => a > 100).map((c) => c * 1.1)
 const iki = tlFiyatlar.filter((a) => a <= 100).map((c) => c *1.15)
 console.log(bir.concat(iki));
+
+//*-------------- ÖRNEK -------------------
+//*people dizisinde ismin ilk harfine göre arama yaparak ilgili isimlerin ilk 3 harfini yazdıran bir fonksiyon yazınız.
+
+const people=["kubilay","irfan","fatih","özlem","nihal","yunus","emirhan","halit","esra","hüseyin"]
+
+const harfBul =(h)=> {
+    people.filter((isim) => isim.startsWith(h)).map((isim) => isim.slice(0,3)).forEach((isim) => console.log(isim))
+}
+//! islemi forEach ile yaparsak tek tek döndurur, ama forEach kullanmadan islemi bir degere atip 
+//! onu yazdirirsak array halinde görebiliriz.
+
+harfBul("e")
+// emi
+// esr
+harfBul("h")
+// hal
+// hüs
+
+//* ======================================================
+//*                      REDUCE
+//* ======================================================
+
+//* salaries dizisindeki maaşları toplayınız (reduce metodu kullanın)
+
+const salaries = [3000, 5000, 4000, 6000, 7500]; 
+console.log(salaries.reduce((toplam,diziEleman) => toplam + diziEleman, 0));  // 25500
+
+//! reduce tek bir eleman dondurdugu icin burada map,filter,forEach kullanilamaz
+//! virgulden sonraki deger (burada "0") baslangic degeridir, toplama islemi icin 0 mantikli
+
+const result = salaries.reduce((carpim,diziEleman) => carpim * diziEleman, 1)
+console.log(result);
+
+//! burada baslangic degeri carpim islemi yapildigi icin "1".
+
+
+
+//? ****************+ ORNEKLER +**********************
+//? ÖRNEK-1 (verilem stringi arraye cevirip butun kelimelerin harflerini buyuttuk)
+
+const text = "Clarusway Online Career IT TRAINING School";
+const array = text.split(" ")
+// console.log(array);
+
+array.map((a) => a.toUpperCase()).forEach((a) => console.log(a))  // dizi olarak sonuc uretmedi
+const arr2 = array.map((a) => a.toUpperCase())
+console.log(arr2);  // dizi olarak sonuc uretti
+
+//? burada da baska versiyonlarini denedik
+array.filter((s) => s.startsWith("I")).map((s) => s.toLowerCase()).forEach((s) => console.log(s))  // it
+array.filter((s) => s.startsWith("T")).map((s) => s[0].toLowerCase() + s.slice(1)).forEach((s) => console.log(s)) // training
+//! ustteki sekilde "T" ile baslayan kelimelerin ilk harflerini kuculterek sonuc aldik.
+
+//? ÖRNEK-2 ("n" harfi ile biten kelimeleri tersten yazdirip yeni bir diziye attik)
+
+// const people=["kubilay","irfan","fatih","özlem","nihal","yunus","emirhan","halit","esra","hüseyin"]
+const yeni = people.filter((a) => a.endsWith("n")).map((a) => a.split("").reverse().join(""))
+console.log(yeni);
