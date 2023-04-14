@@ -232,26 +232,67 @@ console.log(isString(2019))
 let avengers = ['Iron Man', 'Captain America', 'Black Widow', 'Hulk', 'Hawkeye'] 
 
 const newArray1 = avengers.slice(-2)
-console.log(newArray1);
+console.log(newArray1);  // ['Hulk', 'Hawkeye']
 
 const newArray2 = avengers.slice(2)
-console.log(newArray2);
+console.log(newArray2);  // ['Black Widow', 'Hulk', 'Hawkeye']
+
 
 const newArray3 = avengers.slice()
-console.log(newArray3);
+console.log(newArray3);  // ['Iron Man', 'Captain America', 'Black Widow', 'Hulk', 'Hawkeye']
 //! **********************************************************************
 let avengers2 = ['Iron Man', 'Captain America', 'Black Widow', 'Hulk', 'Hawkeye'] 
 
-console.log(avengers2.splice(2,1,'Thor', 'Hawkeye'));
+console.log(avengers2.splice(2,1,'Thor', 'Hawkeye'));  // ['Black Widow'] 
+
 
 //! **********************************************************************
 
 const capitalizeFirstLetter = (inputString) => { 
     let newText = inputString.split(" ");
-    // console.log(newText); 
+    console.log(newText); // ['Lorem', 'ipsum', 'Dolor', 'sit', 'amet,', 'conde', 'elit.']
+
     for (i in newText) { 
       newText[i] = newText[i].charAt(0).toUpperCase() + newText[i].slice(1); 
     } 
     return newText.join(" ") 
 }
 console.log(capitalizeFirstLetter("Lorem ipsum Dolor sit amet, conde elit."))
+
+//! ************** VAR ile LET farklari *********************************
+
+function example() {
+  var x = 1; // Fonksiyon kapsamında tanımlandı
+  let y = 2; // Blok kapsamında tanımlandı
+
+  if (true) {
+    var x = 3; // Değer değiştirildi
+    let y = 4; // Yeni bir değişken oluşturuldu
+    console.log(x); // 3
+    console.log(y); // 4
+  }
+
+  console.log(x); // 3 - Değişken fonksiyon kapsamında olduğundan burada da erişilebilir
+  console.log(y); // 2 - Değişken blok kapsamında olduğundan burada değişkenin ilk değeri olan 2'ye erişilebilir
+}
+//! **********************************************************************
+var x = 1;
+var x = 2; // Aynı isimle tekrar değişken tanımlanır
+
+console.log(x); // 2 - Son tanımlanan değeri yazar
+
+let y = 3;
+let y = 4; // SyntaxError: Identifier 'y' has already been declared
+
+console.log(y); // Uncaught ReferenceError: y is not defined
+
+//! ********************* HOISTING ***********************************
+console.log(x); // sonucu: undefined
+var x = 5;
+
+myFunction();
+
+function myFunction() {
+  console.log("Hello World!");
+}
+
