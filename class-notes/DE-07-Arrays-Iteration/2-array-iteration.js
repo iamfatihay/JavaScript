@@ -67,3 +67,55 @@ fiyatlar.map((p,i,array)=>{
 })
 
 console.log(fiyatlar);
+
+//?-------------- ÖRNEK -------------------
+//? tlPrices dizisindeki rakamlarin Euro ve dolar
+//? karsiliklarini hesaplatarak yeni dizelere kaydediniz
+
+const tlPrices = [100,150,200,80,50]
+const dolar = 19.20
+const euro = 21.20
+
+const dolarPrices = tlPrices.map((a) => +(a/dolar).toFixed(2))
+//! Number a cevirmek icin + koyduk, toFixed stringe cevirir cunku. Number() olarak da kullanilabilir
+console.log(dolarPrices);
+
+const euroPrices = tlPrices.map((i) => Number((i/euro).toFixed(2)))
+//! Number() kullanilirsa ekstra parantezlere dikkat
+console.log(euroPrices);
+
+//* ======================================================
+//*                       FILTER METHOD
+//* ======================================================
+//* prices array"inde fiyatı 100 TL den az olanlari ayri
+//* bir diziye saklayalim.
+
+// const prices=[200,500,100,180]
+
+const yeniDizi = prices.filter((a) => a < 200)
+console.log(yeniDizi);   // [100,180]
+
+
+//* ======================================================
+//*                       PIPELINE
+//* ======================================================
+
+//!slide daki soru, pipeline olmazsa böyle uzun uzun if le çözeriz
+//* Fiyatı 100 TL den fazla olanlara %10 zam, 100 TL den az olanlara ise %15 zam yapılmak isteniyor. Ayrıca, zamlı olan yeni değerleri örnekteki gibi diziye saklamak istiyoruz.
+const tlFiyatlar = [100, 150, 100, 50, 80];
+
+const degerler = tlFiyatlar.map((d) => {
+  if (d > 100) {
+    d = d*1.1
+  } else {
+    d = d * 1.15
+  }
+  return d
+});
+console.log(degerler);
+
+//?-------------- Ikinci cözum -------------------
+
+const bir = tlFiyatlar.filter((a) => a > 100).map((c) => c * 1.1)
+const iki = tlFiyatlar.filter((a) => a <= 100).map((c) => c *1.15)
+console.log(bir.concat(iki));
