@@ -242,8 +242,8 @@ const newArray3 = avengers.slice()
 console.log(newArray3);  // ['Iron Man', 'Captain America', 'Black Widow', 'Hulk', 'Hawkeye']
 //! **********************************************************************
 let avengers2 = ['Iron Man', 'Captain America', 'Black Widow', 'Hulk', 'Hawkeye'] 
-
-console.log(avengers2.splice(2,1,'Thor', 'Hawkeye'));  // ['Black Widow'] 
+avengers2.splice(2,6,'Thor', 'Hawkeye')
+console.log(avengers2)  // ['Black Widow'] 
 
 
 //! **********************************************************************
@@ -275,6 +275,7 @@ function example() {
   console.log(x); // 3 - Değişken fonksiyon kapsamında olduğundan burada da erişilebilir
   console.log(y); // 2 - Değişken blok kapsamında olduğundan burada değişkenin ilk değeri olan 2'ye erişilebilir
 }
+example()
 //! **********************************************************************
 var x = 1;
 var x = 2; // Aynı isimle tekrar değişken tanımlanır
@@ -282,7 +283,7 @@ var x = 2; // Aynı isimle tekrar değişken tanımlanır
 console.log(x); // 2 - Son tanımlanan değeri yazar
 
 let y = 3;
-let y = 4; // SyntaxError: Identifier 'y' has already been declared
+// let y = 4; // SyntaxError: Identifier 'y' has already been declared
 
 console.log(y); // Uncaught ReferenceError: y is not defined
 
