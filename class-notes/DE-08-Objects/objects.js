@@ -198,9 +198,15 @@ const updatePeople = people.map((kisi)=>({
 
 console.log(updatePeople);
 
+//* Ornek8: Developer olanlarin adlarini ve yaslarini yeni bir object olarak saklayin.
 
+const yeni = people.filter((kisi)=>kisi.job=="developer").map((kisi)=>({
+    name:kisi.name,
+    age:kisi.age
+}))
+console.log(yeni);
 
+//* Ornek9: ortalama yasi hesaplayiniz.
 
-
-
+console.log(people.reduce((toplam,eleman)=>toplam + eleman.age,0)/people.length)
 
