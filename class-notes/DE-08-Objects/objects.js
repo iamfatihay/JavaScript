@@ -106,8 +106,79 @@ console.log(mensch.özet());
 console.log(Object.values(mensch));
 console.log(Object.keys(mensch));
 
+//? arrow func'lar aslinda this keyword'lerini kaldirmak icin gelistirilmis bir fonksiyon yazma yontemidir.
+//? Bu sebeple, dogrudan global scope'a baglidir.
+//!NOTE: arrow functions ın sözcüksel bağlamı vardır.
+//! Yani this keyword ü bir arrow function içinde kullanırsak beklenmedik değerler alabiliriz.
+//! arrow kullanınca,  object in içindeki this keyword ü, global scope u (window) ifade ettiği için,
+//! this value nun global scope a bağlanmasını önlemek için, object yöntemi içinde normal function u kullanın.
 
+// * ======================================================
+// *                  OBJECT ITERATION
+// * ======================================================
+// key lerin belirli bir sırası (index) olmadığı için,
+// diziye alırsak object araması daha tutarlı bir arama performansına sahip olacaktır.
+// Ayrıca diziler arasında döngü yapmak, keys arasında döngü yapmaktan daha hızlıdır,
+// bu nedenle tüm öğeler üzerinde işlem yapmayı planlıyorsanız, bunları bir diziye koymak akıllıca olabilir.
 
+const people = [
+    {
+      name: "Mustafa",
+      surname: "Gertrud",
+      job: "developer",
+      age: 30,
+    },
+    {
+      name: "Halo",
+      surname: "Müller",
+      job: "tester",
+      age: 35,
+    },
+    {
+      name: "Mehmet",
+      surname: "Rosenberg",
+      job: "team lead",
+      age: 40,
+    },
+    {
+      name: "Ozkul",
+      surname: "Gutenberg",
+      job: "developer",
+      age: 26,
+    },
+  
+    {
+      name: "Baser",
+      surname: "Shaffer",
+      job: "tester",
+      age: 24,
+    },]
+
+//* Ornek1: People dizisindeki job lari goster
+people.forEach((a)=>console.log(a.job))
+
+//* Ornek2: yaslari 1 er arttir ve sonucu yeni diziye aktar.
+const yaslar = people.map((a)=>a.age+1)
+console.log(yaslar);
+console.log(people[0].age); // kalici degismedi
+
+//* Ornek3: yaslari 1 er arttir ve sonucu dizide kalici degistir.
+
+people.map((kisi,i,array)=>array[i].age = array[i].age+1)
+// people.map((kisi,i,array)=>array[i].age = kisi.age+1)   bu sekilde de yazilabilir.
+
+console.log(people);
+
+//* Ornek4: people (object li) dizisinden yaslari degismis olarak yeni bir objeli dizi olusturalim.
+const yeniPeople = people.map((kisi) => ({
+    name1: kisi.name,
+    surname1: kisi.surname,
+    job1: kisi.job,
+    age1: kisi.age + 5,
+  }));
+  
+  console.log(yeniPeople);
+  console.log(people);
 
 
 
