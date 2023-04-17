@@ -180,6 +180,23 @@ const yeniPeople = people.map((kisi) => ({
   console.log(yeniPeople);
   console.log(people);
 
+//* Ornek5: yasi 33 un ustunde olan kisilerin name lerini listele.
+people.filter((kisi)=>kisi.age>33).forEach((kisi)=>console.log(kisi.name))
+
+//* Ornek6: people dizisine yeni object veri ekleyelim.
+people.push({name:"Ali", surname:"GEL", job:"developer", age:50})
+console.log(people);
+
+//* Ornek7: her elemanin name ini buyuk harf olarak yaz, yaslarini iki kat yap,
+//* mesleklerinin onune senior yazilsin ve bunlari yeni bir diziye atalim.
+
+const updatePeople = people.map((kisi)=>({
+    name:kisi.name.toUpperCase(),
+    age:kisi.age * 2,
+    job:"senior " + kisi.job
+}))
+
+console.log(updatePeople);
 
 
 
