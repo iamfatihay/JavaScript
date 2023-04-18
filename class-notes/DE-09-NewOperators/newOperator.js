@@ -238,3 +238,16 @@ console.log([zeug,otomobiles]);
 console.log(zeug.concat(otomobiles));
 
 console.log([...zeug,"otobus",...otomobiles,"tir"]);
+//! ************************************************************************************
+
+const personel3 = {
+    pName: "Johny",
+    surname: "DEEP",
+    job: "actor",
+    age: 55,
+  };
+
+// const yeni={ pName:personel3.pName, surname:personel3.surname, age:personel3.age,job:"father"}
+const yeni={ ...Personel,job:"father",location:"usa"}
+
+console.log(yeni);
