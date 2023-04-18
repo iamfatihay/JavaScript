@@ -178,3 +178,63 @@ ikizPersonel.age=100
 console.log(personel);
 console.log(ikizPersonel);
 console.log(personel2);
+
+//* ARRAY KOPYA (REST)
+
+const autos=["anadol","renault","tofas","ferrari"]
+// const [ilk,ikinci,...geriKalan]=autos
+// console.log(ilk, ikinci);
+// console.log(geriKalan);
+
+const number=[10,20,30,40]
+const ikizNumber=number
+const[...number2]=number
+
+number2.push(999)
+
+console.log(number);
+console.log(ikizNumber);
+console.log(number2);
+
+ikizNumber.unshift(222)
+number.push(555)
+
+console.log(number);
+console.log(ikizNumber);
+console.log(number2);
+
+//! 2- bir fonksiyonun argumanlarini diziye cevirmek icin kullanilabilir
+
+//* hata vermez ama ilk yollanan iki arguman degerini hesaplar, cunku iki karsilayan var.
+const sum=(x,y)=>x+y
+console.log(sum(1,2,3,4,5,6));
+
+//* dogru cözüm
+const sum2=(...x)=>{
+    console.log(x);
+    console.log(x.reduce((toplam,a)=> toplam +a ,0));
+}
+sum2(1,2,3,4,5,6)
+
+//* ornek-2
+
+const show=(name,surname,...title)=>{
+    console.log(title);
+    console.log(name);
+    console.log(surname);
+
+    console.log(`${name} ${surname} is a ${title.join(" and ")}`);
+}
+show("özlem","kara","developer","anne","chemistry","teacher")
+
+//? ------------------------------------------------------
+//?  SPREAD==>> parçala (yapısını boz)-> istenilen diziye ekle,içinde gezin vs
+//? ------------------------------------------------------
+
+const zeug = ["Aircraft","Helicopter","Bicycle"]
+const otomobiles=["Trucks","Bus","Car","SUV"]
+
+console.log([zeug,otomobiles]);
+console.log(zeug.concat(otomobiles));
+
+console.log([...zeug,"otobus",...otomobiles,"tir"]);
