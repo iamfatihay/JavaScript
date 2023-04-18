@@ -210,3 +210,44 @@ console.log(yeni);
 
 console.log(people.reduce((toplam,eleman)=>toplam + eleman.age,0)/people.length)
 
+//? ***********************  nested objects  ************************************************************************
+
+const people3 = {
+  person1: {
+    name: "Can",
+    surname: "Canan",
+    dob: "1990",
+    job: "developer",
+    salary: "140000",
+    drivingLicense: true,
+  },
+  person2: {
+    name: "John",
+    surname: "Sweet",
+    dob: "1990",
+    job: "tester",
+    salary: "110000",
+    drivingLicense: false,
+  },
+  person3: {
+    name: "Steve",
+    surname: "Job",
+    dob: "2000",
+    job: "developer",
+    salary: "90000",
+    drivingLicense: true,
+  },
+};
+
+//? people object icindeki tum salary leri yazdirin(föngü kullanilmali)
+//! FOR - IN kullanılabilir, index sonuçta. Ama for of kullanılamaz ,
+//! dizilerde verileri almak için itere eden for of object te çalışmaz
+//!!!!JavaScript'te, iterable protokolü uygulamadıkça Objects iterable değildir.
+//! Bu nedenle, bir object in özellikleri üzerinde iterate yapmak için for…of (forEach, map, filter da) kullanamazsınız.
+//! sadece klasik for döngüsü ve for in kullanılabilir
+
+for (let i in people3) {
+  console.log(i);
+  console.log(people3[i].salary);
+  console.log(people3[i].name);
+}
