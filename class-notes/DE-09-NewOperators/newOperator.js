@@ -248,6 +248,55 @@ const personel3 = {
   };
 
 // const yeni={ pName:personel3.pName, surname:personel3.surname, age:personel3.age,job:"father"}
-const yeni={ ...Personel,job:"father",location:"usa"}
+const yeni={ ...personel3,job:"father",location:"usa"}
 
 console.log(yeni);
+
+
+//!diğer file daki örneği spread ile çözeceğiz
+//* Ornek4 people (object li ) dizisinden yaşları değişmiş olarak yeni bir object li dizi oluşturalım
+const insanlar = [
+    {
+      name: "Mustafa",
+      surname: "Gertrud",
+      job: "developer",
+      age: 30,
+    },
+    {
+      name: "Halo",
+      surname: "Müller",
+      job: "tester",
+      age: 35,
+    },
+    {
+      name: "Mehmet",
+      surname: "Rosenberg",
+      job: "team lead",
+      age: 40,
+    },
+    {
+      name: "Ozkul",
+      surname: "Gutenberg",
+      job: "developer",
+      age: 26,
+    },
+  
+    {
+      name: "Baser",
+      surname: "Shaffer",
+      job: "tester",
+      age: 24,
+    },
+  ];
+
+  const yeniPeople = insanlar.map((kisi) => ({
+    name1: kisi.name,
+    surname1: kisi.surname,
+    job1: kisi.job,
+    age1: kisi.age + 5,
+  }));
+
+const yeniInsan = insanlar.map((kisi)=>({
+    ...kisi,age:kisi.age+5
+  }))
+console.log(yeniInsan);
