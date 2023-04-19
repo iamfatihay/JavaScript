@@ -14,7 +14,7 @@
 
 //? METHOD-2 (Function calling in HTML)
 //?---------------------------------------------------------------
-//* indexedDB.html deki kod
+//* index.html deki kod
 {/* <h1 class="H5" onmouseover=yesil() onmouseout=kirmizi()>DOM BASICS</h1> */}
 
 //JAVASCRIPT
