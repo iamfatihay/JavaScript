@@ -16,3 +16,18 @@ const yeniZam = maaslar.filter((a)=>a<4000).map((a)=>a*1.5)
 
 //* Question-5
 maaslar.filter((a)=>a>4000).map((a)=>a*1.25).forEach((a)=>console.log(a))
+
+
+//* ******************** TEAMWORK ****************************+
+var v = 1;
+var f1 = function () {
+ console.log(v);
+};
+
+
+var f2 = function () {
+ var v = 2;
+ f1();
+//  console.log(v);  
+};
+f2();
