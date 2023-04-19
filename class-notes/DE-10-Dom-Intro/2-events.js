@@ -61,7 +61,21 @@ birinci.onclick = () => {
   //   };
   // };
 
-birinci.ondblclick=()=>{
-    birinci.src = "./img/bir.jpeg";
+ikinci.ondblclick=()=>{
+    birinci.src = "./img/bir.jpg";
     ikinci.src = "./img/iki.webp";
 }
+
+//* example3
+const buton=document.querySelector("#btn")
+
+buton.onclick=()=>{
+  badi.style.backgroundImage="linear-gradient(to right,purple,gray)"
+  buton.textContent="SEARCH"
+  buton.style.fontSize="40px"
+  buton.style.color="red"
+}
+
+//!aynı element e (merhaba yazısına mouse ile gelince badi renk değiştirdin demiştik)
+//! hem onclick hem onmouseover atandığında, önce onmouseover  sonra
+//!  onclick i çalıştırırsanız sorun olmaz, tersi durumda onclick baskın old için onmouseover çalışmaz
