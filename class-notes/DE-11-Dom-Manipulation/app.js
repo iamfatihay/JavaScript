@@ -97,5 +97,82 @@ document.querySelector(".konus").onclick=()=>{
 //? mouse ile resmin uzerine gelince
 // resim.onmouseover=()=>{}  boyle de olur asagidaki gibi de
 resim.addEventListener("mouseover",()=>{
-    
+    resim.src="./img/aslan1.jpeg"
+    // ses2.play()
 })
+
+//? mouse ile resmin uzerinden ayrilinca
+resim.addEventListener("mouseout",()=>{
+    resim.src="./img/aslan2.jpeg"
+    // ses2.play()
+})
+
+//!klavyeden inputa veri girişi yapılırken elimizi tuştan çektiğimizde varolan değişiklik
+const textInput= document.querySelector(".textbox")
+const tikInput= document.querySelector(".checkbox")
+
+//? onkeyup = klavyeden elini cektiginde
+// checked=metodu checkbox inputun tikli olup olmadığını kontrol eder. tıklanmışsa true döndürür
+textInput.onkeyup=()=>{
+   if (tikInput.checked) {
+    textInput.value=textInput.value.toUpperCase()
+   } else {
+    textInput.value=textInput.value.toLowerCase()
+   } 
+}
+//inputa veri girişi yaptığımızda, küçük input tikliyse benim büyük inputa girdiğim harfleri büyüt, aksi durumda küçült
+
+//! listemin basina "Programlama Dilleri" h1 etiketi eklemek
+//! ********** Uzun yol ************************************
+//? HTML de h1 elementi olusturmak
+const baslik= document.createElement("h1") //<h1></h1>
+
+//? baslik2 class ismi atayalim
+baslik.className="baslik2";  // class="baslik2"
+
+//? Programlama Dilleri seklinde text olusturduk
+const yazi=document.createTextNode("Programlama Dilleri") 
+
+//? h1 elementi icin olusturdugum text i h1 e child yapalim
+baslik.appendChild(yazi) // <h1>Programlama Dilleri</h1>
+
+//? input-div in sonrasina h1 i ekledim
+document.querySelector(".input-div").after(baslik)
+
+//! ******************* Kisa yol ***************************
+const bolum= document.querySelector("section")
+bolum.innerHTML=`<h1 class="baslik2">Programlama Dilleri</h1>`+bolum.innerHTML
+
+
+//! languages inputuna girilen degerleri, ul ye eklemek 
+//! uzun yol
+
+const dil=document.querySelector(".languages")
+
+ //* yeni girilen satiri saklamak icin bir li olusturduk.
+// const yeniLi= document.createElement("li")
+
+  //* yeni li icin textnode olusturduk
+// const text= document.createTextNode(dil.value)
+  
+  //*olusturdugumuz texnode'u yeni li'ye bagladik.
+// yeniLi.appendChild(text)
+
+  //* yeni eklenen satiri var olan listeye (ul) baglayalim.
+const liste=document.querySelector(".liste")
+// liste.appendChild(yeniLi)
+
+document.querySelector(".ekle").onclick=()=>{
+    //? kisayol
+    liste.innerHTML+=`<li>${dil.value}</li>`
+
+    //* ekle ye basinca input un ici tekrar bosalsin
+    dil.value=""
+}
+
+//! Sil butonuna basilinca ul listesinden li elemanini silmek icin removeChild metodunu kullanacagiz
+document.querySelector(".sil").onclick=()=>{
+    liste.removeChild(liste.lastElementChild)  //* son cocugu siler
+    // liste.removeChild(liste.firstElementChild)  //* ilk cocugu siler
+    // liste.removeChild(liste.children[2])  //* 2 indeksli cocugu siler
+}
