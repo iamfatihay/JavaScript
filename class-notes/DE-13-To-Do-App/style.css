@@ -61,7 +61,7 @@ header {
 }
 
 #todo-button:hover {
-  opacity: 0.3;
+  opacity: 0.6;
 }
 
 .todos {
@@ -96,6 +96,9 @@ li i {
   padding: 1rem;
   color: #ea0a0a;
   cursor: pointer;
+}
+.ikinci{
+  margin-left: auto;
 }
 
 li i:hover {
