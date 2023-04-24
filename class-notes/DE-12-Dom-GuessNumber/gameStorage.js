@@ -1,3 +1,7 @@
+//! verilerin kalici olmasi icin diger js dosyasindan farkli olarak birkac kod ekledik burada.
+//! setItem,getItem,localStorage ....
+
+
 //? pc ye 1-20 arasi sayi tutturduk
 let rastgeleSayi = Math.ceil(Math.random() * 20)
 console.log(rastgeleSayi);
