@@ -6,7 +6,10 @@ let mesaj = document.querySelector(".msg")
 let skor = 10;
 //skor u  index.html deki skor u buraya çekerekte yapabiliriz ama
 // çok kullanacağımız için bu daha tercih edilen yol
-let enYuksekSkor = 0;
+//?-----------localStorage de topScore adıyla bir degisken varsa onu  getir yoksa 0 olsun
+let enYuksekSkor = localStorage.getItem("topScore") || 0
+//?----browser da, DOM da top-score değerini localStoroge den okuyarak güncelle, özellikle 2. 3. oyuncular için gerekli
+document.querySelector(".top-score").textContent = enYuksekSkor;
 
 //? ***********************************************************
 //? her check butonuna basilinca yapilacaklar:
@@ -25,7 +28,10 @@ document.querySelector(".check").addEventListener("click", () => {
 
         //? topScore kontrolu yap
         if (skor > enYuksekSkor) {
-            enYuksekSkor = skor
+            //?eğer yeni skor localStoroge den yüksekse, kayıtlı topScore u benim skor umla güncelle
+
+            localStorage.setItem("topScore",skor)
+            enYuksekSkor = skor;
             document.querySelector(".top-score").textContent = enYuksekSkor
         }
         //? tahmin yanlissa
