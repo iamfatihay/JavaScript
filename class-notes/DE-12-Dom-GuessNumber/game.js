@@ -39,6 +39,7 @@ document.querySelector(".check").addEventListener("click", () => {
         } else {
             mesaj.textContent = "Oyunu kaybettiniz"
             document.querySelector(".score").textContent = 0
+            document.querySelector("body").style.backgroundColor = "red"
         }
     }
 })
