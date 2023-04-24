@@ -44,7 +44,7 @@ document.querySelector(".check").addEventListener("click", () => {
 })
 
 //? Again butonuna basilinca ayarlar baslangic degerine kurulsun,
-//? arka ekran #2d3436 olsun
+//? ve arka ekran #2d3436 olsun
 document.querySelector(".again").onclick=()=>{
     document.querySelector("body").style.backgroundColor = "#2d3436"
     rastgeleSayi = Math.ceil(Math.random() * 20)
@@ -53,4 +53,5 @@ document.querySelector(".again").onclick=()=>{
     document.querySelector(".number").textContent="?"
     document.querySelector(".guess").value=""
     mesaj.textContent="Oyun yeni oyuncu icin basliyor"
+
 }
