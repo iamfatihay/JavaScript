@@ -176,3 +176,19 @@ document.querySelector(".sil").onclick=()=>{
     // liste.removeChild(liste.firstElementChild)  //* ilk cocugu siler
     // liste.removeChild(liste.children[2])  //* 2 indeksli cocugu siler
 }
+
+//! Klavyedeki keyCodelari kullanarak kod yazma
+// dil=input
+dil.onkeydown=(tus)=>{
+    // console.log(tus);event larda alınan parametreler (tus) bize event la ilgili özelliklerin olduğu bir nesne döndürür.
+    // burada keyCode property sini kullandık
+
+    //! enter=13 e basilinca
+    if (tus.keyCode===13) {
+        document.querySelector(".ekle").click()
+    }
+    //! shift=46 ya basilinca
+    if (tus.keyCode===46) {
+     document.querySelector(".sil").click()   
+    }
+}
