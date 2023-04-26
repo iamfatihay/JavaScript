@@ -55,12 +55,32 @@ listeButon.onclick=()=>{
     liste.push(listeInput.value);
     total++
 
-    listeUl.innerHTML=`<li>
+    listeUl.innerHTML=`<li class="ayse">
     <i class="fa-solid fa-check fa-lg"></i>
     <p>${liste[liste.length-1]}</p>   //!<p>${listeInput.value}</p> bu da kullanilabilir
     <i class="fa-solid fa-trash fa-lg"></i>
     </li>`+listeUl.innerHTML;
 
     toplam.textContent=total
+    listeInput.value=""
+    listeInput.focus() //! her li girisinde cursor inputta olsun 
   }
+//!silme metodu, ekrana basıldığı süslü de olmalı, dışarıda fa-trash lara tıklayınca,
+//! remove mantıklı değil, ortada fa-trash daha oluşmadan (add butonuna basılmadan) js ye çağırmak gibi oluyor
+// trash butonuna tıklanınca
+createSilButon()
+
+//!check
+// createCheckButon()
+
+};
+
+const createSilButon=()=>{
+  //? ul deki butun fa-trash lara ulas
+  document.querySelectorAll(".fa-trash").forEach((a)=>{
+    a.onclick=()=>{
+      
+    }
+  })
 }
+// const createCheckButon=()=>{}
