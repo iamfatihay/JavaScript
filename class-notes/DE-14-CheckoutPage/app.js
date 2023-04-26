@@ -25,6 +25,7 @@ function updatePrice() {
         document.querySelector("#shipping").textContent="0.00"
         total=0
         document.querySelector("#total").textContent = total.toFixed(2);
+        alert("You don't have any items in your cart!")
     }
   }
   
