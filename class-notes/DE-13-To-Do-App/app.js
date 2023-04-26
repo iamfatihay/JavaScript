@@ -90,7 +90,13 @@ const createSilButon = () => {
       //! sonrasinda diziyi bastirmaya kalkarsak eleman hala dizide bulundugu icin yanlis cevap aliriz,
       a.parentElement.remove()
       total--
-      toplam.textContent = total
+      toplam.textContent = total;
+      if (completed>0 && a.parentElement.classList.contains("checked")) {
+        completed--
+        document.querySelector("#tamamlanan").textContent = completed
+      } else {
+        
+      }
     }
   })
 }
@@ -114,3 +120,20 @@ const createCheckButon = () => {
   //! varolan elemanları silip sadece örnek class ı nı atar. classList ile toggle ve contains kullanmalıyız,
   //! className ile toggle kullanamıyoruz contains yerine includes kullanmalıyız, javascriptte includes tercih edilir
 }
+  //   //!2.yol
+  //  document.querySelectorAll(".fa-check").forEach((a) => {
+  //    a.onclick = () => {
+ 
+  //       if (a.parentElement.className=="checked")
+  //        {
+ 
+  //         a.parentElement.className=""
+  //         completed = completed - 1;
+  //       } else {
+ 
+  //         a.parentElement.className = "checked";
+  //         completed = completed + 1;
+  //       }
+  //      document.querySelector("#tamamlanan").textContent = completed;
+  //    };
+  //  })
