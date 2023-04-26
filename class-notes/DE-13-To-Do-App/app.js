@@ -69,10 +69,10 @@ listeButon.onclick = () => {
   //! remove mantıklı değil, ortada fa-trash daha oluşmadan (add butonuna basılmadan) js ye çağırmak gibi oluyor
   // trash butonuna tıklanınca
   createSilButon()
-
+  // burada queryselectorAll yolunu tercih ettik
   //!check
   createCheckButon()
-
+  // burada da target yolunu tercih ettik
 };
 
 const createSilButon = () => {
@@ -80,6 +80,9 @@ const createSilButon = () => {
   document.querySelectorAll(".fa-trash").forEach((a) => {
     a.onclick = () => {
       //! listeden silme
+      //! closest=herhangi bir elemanın istediğiniz uzaklıktaki parent ına götürür.
+      //! yani a.parentElement.parentElement.parentElement ile 3. babaya ulaşabilirken closest ile
+      //! 3. babanın adını yazarak direk ulaşabiliriz
       liste = liste.filter((yapilacak) => yapilacak != a.closest("li").querySelector("p").textContent) // li den sonra".innerText" ile de yaziya ulasabilirdik
       // console.log(liste);
 
