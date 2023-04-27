@@ -93,7 +93,7 @@ document.querySelectorAll(".remove").forEach((item) => {
     item.onclick = () => { 
         const row = item.closest(".row");
         row.remove();
-        const rowAmount = parseFloat(row.querySelector(".sil").textContent);
+        const rowAmount = parseFloat(row.querySelector(".sil").textContent);        
         subTotal=subTotal-rowAmount
         document.querySelector("#subTotal").textContent = subTotal.toFixed(2)
         tax = subTotal * 0.18
