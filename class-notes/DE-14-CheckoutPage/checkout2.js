@@ -130,18 +130,12 @@ document.querySelectorAll(".adet-controller").forEach((kutu) => {
     }
 
     plus.onclick=()=>{
-        
+
 
 
 
     }
 })
-
-
-
-
-
-
 
 
 
