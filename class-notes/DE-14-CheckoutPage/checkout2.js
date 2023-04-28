@@ -108,14 +108,33 @@ document.querySelectorAll(".remove-ürün").forEach((btn) => {
 //! *********************************
 //! ADET DEGISTIRME
 //! *********************************
-document.querySelectorAll(".adet-controller").forEach((kutu)=>{
-   const minus= kutu.firstElementChild
-   const plus= kutu.lastElementChild
-   const amount=kutu.children[1] //const amount=minus.nextElementSibling
+document.querySelectorAll(".adet-controller").forEach((kutu) => {
+    const minus = kutu.firstElementChild
+    const plus = kutu.lastElementChild
+    const amount = kutu.children[1] //const amount=minus.nextElementSibling
 
-   minus.onclick=()=>{
-    amount.textContent-=1
-   }
+    minus.onclick = () => {
+
+        //?ekrandan azalttik
+        amount.textContent -= 1
+
+        //? diziden adeti azaltalim
+        sepettekiler.map((ürün) => {
+            if (ürün.name == minus.closest(".card").querySelector("h5").textContent) {
+                ürün.adet = ürün.adet - 1
+            }
+        })
+        //? ürün-toplam kismini ekranda guncelleyelim
+        minus.closest(".card").querySelector(".ürün-toplam").textContent = minus.closest(".card").querySelector(".indirim-price").textContent * amount.textContent
+        hesaplaTotal()
+    }
+
+    plus.onclick=()=>{
+        
+
+
+
+    }
 })
 
 
