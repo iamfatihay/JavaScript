@@ -2,24 +2,22 @@
 //*                 Checkout Page Solution
 //*  map filter, dest,spread==============================================
 //!table da kullanılacak değişkenler
-const kargo = 15.0;
+const kargo = 15.00;
 // const vergi = 0.18;
 
 let sepettekiler = [
-  { name: "Vintage Backpack", price: 34.99, adet: 1, img: "./img/photo1.png" },
-  { name: "Levi Shoes", price: 40.99, adet: 1, img: "./img/photo2.png" },
-  { name: "Antique Clock", price: 69.99, adet: 1, img: "./img/photo3.jpg" },
+    { name: "Vintage Backpack", price: 34.99, adet: 1, img: "./img/photo1.png" },
+    { name: "Levi Shoes", price: 40.99, adet: 1, img: "./img/photo2.png" },
+    { name: "Antique Clock", price: 69.99, adet: 1, img: "./img/photo3.jpg" },
 ];
 
-// document.querySelector("#urun-rowlari").innerHTML
 
-sepettekiler.forEach((ürün)=>{
+sepettekiler.forEach((ürün) => {
 
-//! DESTRUCTURING
-    const{name,img,adet,price}=ürün
+    //! DESTRUCTURING
+    const { name, img, adet, price } = ürün
 
-
-    document.querySelector("#urun-rowlari").innerHTML+=`<div class="card mb-3" style="max-width: 540px;">
+    document.querySelector("#urun-rowlari").innerHTML += `<div class="card mb-3" style="max-width: 540px;">
 
     <div class="row g-0">
   
@@ -35,7 +33,7 @@ sepettekiler.forEach((ürün)=>{
           
                <div class="ürün-price">
                       <p class="text-warning h2">$
-                        <span class="indirim-price">${(price*0.7).toFixed(2)}</span>
+                        <span class="indirim-price">${(price * 0.7).toFixed(2)}</span>
                         <span class="h5 text-dark text-decoration-line-through">${price} </span>
                       </p>
                     </div>
@@ -63,7 +61,7 @@ sepettekiler.forEach((ürün)=>{
                     </div>
   
                     <div class="mt-2">
-                      Ürün Toplam: $<span class="ürün-toplam">${(price*0.7*adet).toFixed(2)}</span>
+                      Ürün Toplam: $<span class="ürün-toplam">${(price * 0.7 * adet).toFixed(2)}</span>
                     </div>
         </div>
       </div>
@@ -73,7 +71,7 @@ sepettekiler.forEach((ürün)=>{
 
 //? browser da en alttaki total kisminin table i
 
-document.querySelector("#odeme-table").innerHTML=`<table class="table">
+document.querySelector("#odeme-table").innerHTML = `<table class="table">
 <tbody>
   <tr class="text-end">
     <th class="text-start">Aratoplam</th>
@@ -94,24 +92,31 @@ document.querySelector("#odeme-table").innerHTML=`<table class="table">
 </tbody>
 </table>`
 
-
+//! *********************************
 //! SILME
-document.querySelectorAll(".remove-ürün").forEach((btn)=>{
-    btn.onclick=()=>{
+//! *********************************
+document.querySelectorAll(".remove-ürün").forEach((btn) => {
+    btn.onclick = () => {
         //! ekrandan silme
         btn.closest(".card").remove()
 
         //! diziden silme
-        
+        sepettekiler = sepettekiler.filter((ürün) => ürün.name != btn.closest(".card").querySelector("h5").textContent)
+        hesaplaTotal()  // her degisiklikten sonra fiyat gincellemelerini yapsin diye
     }
 })
+//! *********************************
+//! ADET DEGISTIRME
+//! *********************************
+document.querySelectorAll(".adet-controller").forEach((kutu)=>{
+   const minus= kutu.firstElementChild
+   const plus= kutu.lastElementChild
+   const amount=kutu.children[1] //const amount=minus.nextElementSibling
 
-
-
-
-
-
-
+   minus.onclick=()=>{
+    amount.textContent-=1
+   }
+})
 
 
 
@@ -123,19 +128,25 @@ document.querySelectorAll(".remove-ürün").forEach((btn)=>{
 
 hesaplaTotal()
 
-function hesaplaTotal(){
-  const ürünToplam = document.querySelectorAll(".ürün-toplam");
+function hesaplaTotal() {
+    const ürünToplam = document.querySelectorAll(".ürün-toplam");
 
-  //? araToplam= en alttaki tüm ürünler için vergi ve kargo hariç sepettekilerin indirimli fiyat toplamı
-  //?Reduce tam olarak Array istiyor, nodelist yeterli değil
-  const araToplam = Array.from(ürünToplam).reduce(
-    (toplam, eleman) => toplam + Number(eleman.textContent),
-    0
-  );
+    //? araToplam= en alttaki tüm ürünler için vergi ve kargo hariç sepettekilerin indirimli fiyat toplamı
+    //?Reduce tam olarak Array istiyor, nodelist yeterli değil
+    const araToplam = Array.from(ürünToplam).reduce(
+        (toplam, eleman) => toplam + Number(eleman.textContent),
+        0
+    );
 
-  document.querySelector(".aratoplam").textContent = araToplam;
-  document.querySelector(".vergi").textContent = (araToplam * 0.18).toFixed(2)
-document.querySelector(".kargo").textContent=araToplam > 0 ? kargo: 0
-// document.querySelector(".kargo").textContent=15.0
-document.querySelector(".toplam").textContent =(araToplam + (araToplam * 0.18)+kargo).toFixed(2)
+    document.querySelector(".aratoplam").textContent = araToplam;
+    document.querySelector(".vergi").textContent = (araToplam * 0.18).toFixed(2)
+    document.querySelector(".kargo").textContent = araToplam > 0 ? kargo : 0.00
+    // document.querySelector(".kargo").textContent=15.0
+    if (araToplam == 0) {
+        document.querySelector(".toplam").textContent = 0
+        alert("You don't have any items in your cart!")
+    }
+    else {
+        document.querySelector(".toplam").textContent = (araToplam + (araToplam * 0.18) + kargo).toFixed(2)
+    }
 }
