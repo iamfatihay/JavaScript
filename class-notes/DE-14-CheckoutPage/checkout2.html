@@ -27,7 +27,17 @@
 
 <main class="container d-flex justify-content-center">
 <section class="bg-light w-75">
-<!-- <form  class=" p-2">
+
+<!--! İSTEĞE BAĞLI KISIM -->
+  <!-- buradaki input yapısı ile ekranda inputlar çıkacak, inputlara girilen veriler sepettekiler e eklenmeli =>şu şekilde
+      sepettekiler.push({
+     name: bir.value,
+     price: +iki.value,
+     adet: 1,
+     img: üc.value,
+   });,  
+   sepettekileri ekrana bastırma kodu (js de yazdığımız backtick li kısım) bir fonksiyonla sarmallanmalı ve, sepettekiler e inputtaki veriler eklenince, dizi ekrana tekrar bastırılacağı için, sepettekileri ekrana bastır fonksiyonunu çağırmak yeterli olur -->
+<div  class=" p-2">
             <div class="mb-3">
               <label for="add-name" class="form-label">Product Name</label>
               <input type="text" class="form-control bir" id="add-name" required />
@@ -58,7 +68,7 @@
                 <i class="fa-solid fa-cart-plus me-2"></i>Add To Cart
               </button>
             </div>
-          </form> -->
+          </div>
 <article id="urun-rowlari"></article>
 
 <article id="odeme-table"></article>
