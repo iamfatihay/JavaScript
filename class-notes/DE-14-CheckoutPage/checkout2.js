@@ -6,18 +6,18 @@ const kargo = 15.00;
 // const vergi = 0.18;
 
 let sepettekiler = [
-    { name: "Vintage Backpack", price: 34.99, adet: 1, img: "./img/photo1.png" },
-    { name: "Levi Shoes", price: 40.99, adet: 1, img: "./img/photo2.png" },
-    { name: "Antique Clock", price: 69.99, adet: 1, img: "./img/photo3.jpg" },
+  { name: "Vintage Backpack", price: 34.99, adet: 1, img: "./img/photo1.png" },
+  { name: "Levi Shoes", price: 40.99, adet: 1, img: "./img/photo2.png" },
+  { name: "Antique Clock", price: 69.99, adet: 1, img: "./img/photo3.jpg" },
 ];
 
 
 sepettekiler.forEach((ürün) => {
 
-    //! DESTRUCTURING
-    const { name, img, adet, price } = ürün
+  //! DESTRUCTURING
+  const { name, img, adet, price } = ürün
 
-    document.querySelector("#urun-rowlari").innerHTML += `<div class="card mb-3" style="max-width: 540px;">
+  document.querySelector("#urun-rowlari").innerHTML += `<div class="card mb-3" style="max-width: 540px;">
 
     <div class="row g-0">
   
@@ -96,70 +96,78 @@ document.querySelector("#odeme-table").innerHTML = `<table class="table">
 //! SILME
 //! *********************************
 document.querySelectorAll(".remove-ürün").forEach((btn) => {
-    btn.onclick = () => {
-        //! ekrandan silme
-        btn.closest(".card").remove()
+  btn.onclick = () => {
+    //! ekrandan silme
+    btn.closest(".card").remove()
 
-        //! diziden silme
-        sepettekiler = sepettekiler.filter((ürün) => ürün.name != btn.closest(".card").querySelector("h5").textContent)
-        hesaplaTotal()  // her degisiklikten sonra fiyat gincellemelerini yapsin diye
-    }
+    //! diziden silme
+    sepettekiler = sepettekiler.filter((ürün) => ürün.name != btn.closest(".card").querySelector("h5").textContent)
+    hesaplaTotal()  // her degisiklikten sonra fiyat gincellemelerini yapsin diye
+  }
 })
 //! *********************************
 //! ADET DEGISTIRME
 //! *********************************
 document.querySelectorAll(".adet-controller").forEach((kutu) => {
-    const minus = kutu.firstElementChild
-    const plus = kutu.lastElementChild
-    const amount = kutu.children[1] //const amount=minus.nextElementSibling
+  const minus = kutu.firstElementChild
+  const plus = kutu.lastElementChild
+  const amount = kutu.children[1] //const amount=minus.nextElementSibling
 
-    minus.onclick = () => {
+  minus.onclick = () => {
+    if (amount.textContent == 0) {
+      return
+    } else {
+      //?ekrandan azalttik
+      amount.textContent -= 1
 
-        //?ekrandan azalttik
-        amount.textContent -= 1
-
-        //? diziden adeti azaltalim
-        sepettekiler.map((ürün) => {
-            if (ürün.name == minus.closest(".card").querySelector("h5").textContent) {
-                ürün.adet = ürün.adet - 1
-            }
-        })
-        //? ürün-toplam kismini ekranda guncelleyelim
-        minus.closest(".card").querySelector(".ürün-toplam").textContent = minus.closest(".card").querySelector(".indirim-price").textContent * amount.textContent
-        hesaplaTotal()
+      //? diziden adeti azaltalim
+      sepettekiler.map((ürün) => {
+        if (ürün.name == minus.closest(".card").querySelector("h5").textContent) {
+          ürün.adet = ürün.adet - 1
+        }
+      })
+      //? ürün-toplam kismini ekranda guncelleyelim
+      minus.closest(".card").querySelector(".ürün-toplam").textContent = (minus.closest(".card").querySelector(".indirim-price").textContent * amount.textContent).toFixed(2)
+      hesaplaTotal()
     }
+  }
 
-    plus.onclick=()=>{
-
-
-
-
-    }
+  plus.onclick = () => {
+    amount.textContent = Number(amount.textContent) + 1
+    sepettekiler.map((ürün) => {
+      if (ürün.name == plus.closest(".card").querySelector("h5").textContent) {
+        ürün.adet = ürün.adet + 1
+      }
+    })
+    plus.closest(".card").querySelector(".ürün-toplam").textContent = (plus.closest(".card").querySelector(".indirim-price").textContent * amount.textContent).toFixed(2)
+    hesaplaTotal()
+  }
 })
+
 
 
 
 hesaplaTotal()
 
 function hesaplaTotal() {
-    const ürünToplam = document.querySelectorAll(".ürün-toplam");
+  const ürünToplam = document.querySelectorAll(".ürün-toplam");
 
-    //? araToplam= en alttaki tüm ürünler için vergi ve kargo hariç sepettekilerin indirimli fiyat toplamı
-    //?Reduce tam olarak Array istiyor, nodelist yeterli değil
-    const araToplam = Array.from(ürünToplam).reduce(
-        (toplam, eleman) => toplam + Number(eleman.textContent),
-        0
-    );
+  //? araToplam= en alttaki tüm ürünler için vergi ve kargo hariç sepettekilerin indirimli fiyat toplamı
+  //?Reduce tam olarak Array istiyor, nodelist yeterli değil
+  const araToplam = Array.from(ürünToplam).reduce(
+    (toplam, eleman) => toplam + Number(eleman.textContent),
+    0
+  );
 
-    document.querySelector(".aratoplam").textContent = araToplam;
-    document.querySelector(".vergi").textContent = (araToplam * 0.18).toFixed(2)
-    document.querySelector(".kargo").textContent = araToplam > 0 ? kargo : 0.00
-    // document.querySelector(".kargo").textContent=15.0
-    if (araToplam == 0) {
-        document.querySelector(".toplam").textContent = 0
-        alert("You don't have any items in your cart!")
-    }
-    else {
-        document.querySelector(".toplam").textContent = (araToplam + (araToplam * 0.18) + kargo).toFixed(2)
-    }
+  document.querySelector(".aratoplam").textContent = araToplam.toFixed(2);
+  document.querySelector(".vergi").textContent = (araToplam * 0.18).toFixed(2)
+  document.querySelector(".kargo").textContent = araToplam > 0 ? kargo : 0.00
+  // document.querySelector(".kargo").textContent=15.0
+  if (araToplam == 0) {
+    document.querySelector(".toplam").textContent = 0
+    alert("You don't have any items in your cart!")
+  }
+  else {
+    document.querySelector(".toplam").textContent = (araToplam + (araToplam * 0.18) + kargo).toFixed(2)
+  }
 }
