@@ -63,7 +63,8 @@ const brewTea = () => {
         return "Çay hazır. Afiyet olsun";
       }).catch((err) => console.log(err));
   };
-  const boil = () => {
+
+const boil = () => {
     return new Promise((resolve, reject) => {
       const boiled = Math.floor(Math.random() * 5); //!0 tutarsa false
       if (boiled) {
@@ -74,7 +75,8 @@ const brewTea = () => {
     });
   };
   
-  const addTea = () => {
+
+const addTea = () => {
     return new Promise((resolve, reject) => {
       const teaAvalaible = Math.floor(Math.random() * 3);
       if (teaAvalaible) {
@@ -85,7 +87,7 @@ const brewTea = () => {
     });
   };
   
-   brewTea();
+brewTea();
 
 
 

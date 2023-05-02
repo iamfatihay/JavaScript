@@ -1,3 +1,6 @@
+//! Bu sayfa benim ilk cozumlerim, diger checkout dosyalari hocayla yapilanlar
+
+
 let bagPrice = 25.98;
 let bagNumber = 1;
 const bag = document.querySelector("#bag");

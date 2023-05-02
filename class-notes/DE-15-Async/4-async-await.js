@@ -52,7 +52,4 @@ const ekranaBastir=(data)=>{
         <h3 class="fst-italic">${item.show.genres}</h3>
     `
     });
-
-    
-
 }
