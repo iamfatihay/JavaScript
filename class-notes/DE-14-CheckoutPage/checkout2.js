@@ -12,62 +12,68 @@ let sepettekiler = [
 ];
 
 
-sepettekiler.forEach((ürün) => {
+ekranaYazdir()
+function ekranaYazdir(){
+  document.querySelector("#urun-rowlari").innerHTML = "";
 
-  //! DESTRUCTURING
-  const { name, img, adet, price } = ürün
+  sepettekiler.forEach((ürün) => {
 
-  document.querySelector("#urun-rowlari").innerHTML += `<div class="card mb-3" style="max-width: 540px;">
-
-    <div class="row g-0">
+    //! DESTRUCTURING
+    const { name, img, adet, price } = ürün
   
-      <div class="col-md-5">
-        <img src=${img}  class=" w-100 rounded-start" alt="...">
-      </div>
+    document.querySelector("#urun-rowlari").innerHTML += `<div class="card mb-3" style="max-width: 540px;">
   
-      <div class="col-md-7 ">
-  
-        <div class="card-body">
-        
-          <h5 class="card-title">${name}</h5>
+      <div class="row g-0">
+    
+        <div class="col-md-5">
+          <img src=${img}  class=" w-100 rounded-start" alt="...">
+        </div>
+    
+        <div class="col-md-7 ">
+    
+          <div class="card-body">
           
-               <div class="ürün-price">
-                      <p class="text-warning h2">$
-                        <span class="indirim-price">${(price * 0.7).toFixed(2)}</span>
-                        <span class="h5 text-dark text-decoration-line-through">${price} </span>
-                      </p>
-                    </div>
-  
-                    
-                    <div
-                      class="border border-1 border-dark shadow-lg d-flex justify-content-center p-2"
-                    >
-                      <div class="adet-controller">
-                        <button class="btn btn-secondary btn-sm minus">
-                          <i class="fas fa-minus"></i>
-                        </button>
-                        <p class="d-inline mx-4" id="ürün-adet">${adet}</p>
-                        <button class="btn btn-secondary btn-sm plus">
-                          <i class="fas fa-plus"></i>
+            <h5 class="card-title">${name}</h5>
+            
+                 <div class="ürün-price">
+                        <p class="text-warning h2">$
+                          <span class="indirim-price">${(price * 0.7).toFixed(2)}</span>
+                          <span class="h5 text-dark text-decoration-line-through">${price} </span>
+                        </p>
+                      </div>
+    
+                      
+                      <div
+                        class="border border-1 border-dark shadow-lg d-flex justify-content-center p-2"
+                      >
+                        <div class="adet-controller">
+                          <button class="btn btn-secondary btn-sm minus">
+                            <i class="fas fa-minus"></i>
+                          </button>
+                          <p class="d-inline mx-4" id="ürün-adet">${adet}</p>
+                          <button class="btn btn-secondary btn-sm plus">
+                            <i class="fas fa-plus"></i>
+                          </button>
+                        </div>
+    
+                      </div>
+    
+                      <div class="ürün-removal mt-4">
+                        <button class="btn btn-danger btn-sm w-100 remove-ürün">
+                          <i class="fa-solid fa-trash-can me-2"></i>Remove
                         </button>
                       </div>
-  
-                    </div>
-  
-                    <div class="ürün-removal mt-4">
-                      <button class="btn btn-danger btn-sm w-100 remove-ürün">
-                        <i class="fa-solid fa-trash-can me-2"></i>Remove
-                      </button>
-                    </div>
-  
-                    <div class="mt-2">
-                      Ürün Toplam: $<span class="ürün-toplam">${(price * 0.7 * adet).toFixed(2)}</span>
-                    </div>
+    
+                      <div class="mt-2">
+                        Ürün Toplam: $<span class="ürün-toplam">${(price * 0.7 * adet).toFixed(2)}</span>
+                      </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>`
-})
+    </div>`
+  })
+}
+
 
 //? browser da en alttaki total kisminin table i
 
@@ -95,7 +101,8 @@ document.querySelector("#odeme-table").innerHTML = `<table class="table">
 //! *********************************
 //! SILME
 //! *********************************
-document.querySelectorAll(".remove-ürün").forEach((btn) => {
+function sil(){
+  document.querySelectorAll(".remove-ürün").forEach((btn) => {
   btn.onclick = () => {
     //! ekrandan silme
     btn.closest(".card").remove()
@@ -105,48 +112,78 @@ document.querySelectorAll(".remove-ürün").forEach((btn) => {
     hesaplaTotal()  // her degisiklikten sonra fiyat gincellemelerini yapsin diye
   }
 })
+}
+
 //! *********************************
 //! ADET DEGISTIRME
 //! *********************************
-document.querySelectorAll(".adet-controller").forEach((kutu) => {
-  const minus = kutu.firstElementChild
-  const plus = kutu.lastElementChild
-  const amount = kutu.children[1] //const amount=minus.nextElementSibling
-
-  minus.onclick = () => {
-    if (amount.textContent == 0) {
-      return
-    } else {
-      //?ekrandan azalttik
-      amount.textContent -= 1
-
-      //? diziden adeti azaltalim
+function adetButon() {
+  document.querySelectorAll(".adet-controller").forEach((kutu) => {
+    const minus = kutu.firstElementChild
+    const plus = kutu.lastElementChild
+    const amount = kutu.children[1] //const amount=minus.nextElementSibling
+  
+    minus.onclick = () => {
+      if (amount.textContent == 0) {
+        return
+      } else {
+        //?ekrandan azalttik
+        amount.textContent -= 1
+  
+        //? diziden adeti azaltalim
+        sepettekiler.map((ürün) => {
+          if (ürün.name == minus.closest(".card").querySelector("h5").textContent) {
+            ürün.adet = ürün.adet - 1
+          }
+        })
+        //? ürün-toplam kismini ekranda guncelleyelim
+        minus.closest(".card").querySelector(".ürün-toplam").textContent = (minus.closest(".card").querySelector(".indirim-price").textContent * amount.textContent).toFixed(2)
+        hesaplaTotal()
+      }
+    }
+  
+    plus.onclick = () => {
+      amount.textContent = Number(amount.textContent) + 1
       sepettekiler.map((ürün) => {
-        if (ürün.name == minus.closest(".card").querySelector("h5").textContent) {
-          ürün.adet = ürün.adet - 1
+        if (ürün.name == plus.closest(".card").querySelector("h5").textContent) {
+          ürün.adet = ürün.adet + 1
         }
       })
-      //? ürün-toplam kismini ekranda guncelleyelim
-      minus.closest(".card").querySelector(".ürün-toplam").textContent = (minus.closest(".card").querySelector(".indirim-price").textContent * amount.textContent).toFixed(2)
+      plus.closest(".card").querySelector(".ürün-toplam").textContent = (plus.closest(".card").querySelector(".indirim-price").textContent * amount.textContent).toFixed(2)
       hesaplaTotal()
     }
+  })
+}
+
+
+//! *********************************
+//! YENI URUN EKLEME
+//! *********************************
+
+document.querySelector(".btnekle").onclick = ()=> yeniUrunEkle()
+
+function yeniUrunEkle (){
+  const name= document.querySelector("#add-name").value
+  const price= document.querySelector("#add-price").value
+  const adet= document.querySelector("#add-adet").value
+  const img= "./img/loading.gif"
+
+  const yenuUrun = {
+    name: name,
+    price: Number(price),
+    adet:Number(adet),
+    img:img
   }
 
-  plus.onclick = () => {
-    amount.textContent = Number(amount.textContent) + 1
-    sepettekiler.map((ürün) => {
-      if (ürün.name == plus.closest(".card").querySelector("h5").textContent) {
-        ürün.adet = ürün.adet + 1
-      }
-    })
-    plus.closest(".card").querySelector(".ürün-toplam").textContent = (plus.closest(".card").querySelector(".indirim-price").textContent * amount.textContent).toFixed(2)
-    hesaplaTotal()
-  }
-})
+  sepettekiler.push(yenuUrun)
 
-
-
-
+  ekranaYazdir()
+  hesaplaTotal()
+  adetButon()
+  sil()
+}
+sil()
+adetButon()
 hesaplaTotal()
 
 function hesaplaTotal() {
