@@ -3,14 +3,14 @@ let showList = []; //!boş bir array aç. alttaki arama olayında datayı göreb
 //!ilk ekrandaki resimleri api den çekiyoruz (search meal by name)
 
 
-//www.themealdb.com/
-https: fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
+https://www.themealdb.com/
+fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
   .then((resp) => resp.json())
   .then((dataa) => {
     console.log(dataa.meals);
     showList = dataa;
     ekranaBastir(showList.meals);
-  });
+});
 
 function ekranaBastir(data) {
   //!ekranı temizle, hangi dizi geldiyse o basılabilsin
