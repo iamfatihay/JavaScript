@@ -11,6 +11,8 @@ const langButton=document.getElementById("lang");
 const searchEl=document.getElementById("search")
 const clearAllButton=document.getElementById("clear-all")
 
+
+
 let units = "metric"; // imperial=fahrenheit , 
 let lang = "en";
 
@@ -28,8 +30,9 @@ let cities = [] //Sorgulanan şehirleri tutacak.
 
 const apiKey = DecryptStringAES(localStorage.getItem("apiKey"))
 //   console.log(apiKey)
-
+//! ***********************
 //! mevcut konumun hava durumunu ögrenme
+//! ***********************
 locate.addEventListener("click", () => {
     navigator.geolocation?.getCurrentPosition(({coords})=> {
     const {latitude, longitude} = coords;
@@ -54,6 +57,9 @@ form.addEventListener("submit", (e) => {
     form.reset()
 });
 
+//! ***********************
+//! languages
+//! ***********************
 
 langButton.addEventListener("click",(e)=>{
     // console.log(e.target);  // nereye tikladigimizi gosterir
@@ -112,6 +118,15 @@ const getWeatherDataFromApi = async () => {
               </figure>`;
             list.prepend(resultData); //öne ekler
             //list.append(resultData); //sona ekler
+
+            //! single clearButton
+            const singleClearButton=document.querySelectorAll(".single-clear-btn");
+            singleClearButton.forEach((button)=>{
+                button.addEventListener("click",(e)=>{
+                    delete cities[cities.indexOf(e.target.closest(".city").id)]
+                    e.target.closest(".city").remove()
+                })
+            })
         }else{
             if (lang=="de") {
                 msgSpan.innerText=`You already know the weather for ${name}, Please search for another city 😉`;
