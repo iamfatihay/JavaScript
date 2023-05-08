@@ -18,7 +18,7 @@ class Book{
             return `${this.title} kitabini ${this.year} yilinda ${this.author} yazmiştir`;
         }
     }
-    //?bu alt süslüye yazdıklarımız direk kalıbın prototype alanına gider (ES6 ile biz belirtmeden)
+    //?bu alt süslüye yazdiklarimiz direk kalibin prototype alanina gider (ES6 ile biz belirtmeden)
     yilHesapla(){
         return 2023-this.year;
     }
@@ -42,3 +42,16 @@ const dergi1=new Dergi("kasagi","Ömer Seyfettin",1932,"aralik")
 console.log(dergi1);
 console.log(dergi1.yilHesapla());
 
+class Gazete extends Book {
+    constructor(author, title, year, d,e) {
+  
+      super(author, title, year);
+      this.mounth=d;
+      this.fiyat=e
+    }
+  }
+   const f=new Gazete("kasagi","", 1932, "aralik",19);
+   console.log(f);
+
+   //! extends edildiği zaman, atadan gelen her veriyi kullanmak zorundayiz,
+   //! en fazla value kismini boş " " birakabiliriz.
