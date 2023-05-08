@@ -56,3 +56,21 @@ function Book(a,b,c){
     book1.fiyat=100
     
     console.log(book1);
+
+    //! OKUL YÖNETIMI HATIRLA
+
+    //? INHERITANCE
+
+    function Dergi(title,author,year,d){
+        Book.call(this,title,author,year)
+
+        this.mounth=d
+    }
+    
+//*Book object inden (kalıbından) türetilen Dergi kalıbına, 
+//*Book un prototype alanındaki bilgiler (ES5 te) direk gelmez,gelmesini istiyorsak
+//*alttaki kodu (daha child oluşturmadan önce)yazmalıyız
+
+    const dergi1 =new Dergi("yaprak dökümü","resat nuri",1980,"eylül")
+    console.log(dergi1);
+    console.log(dergi1.özetFunction());
