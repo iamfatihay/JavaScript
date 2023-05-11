@@ -32,6 +32,16 @@
 // };
 // f2();
 //* ******************** denemeler ****************************+
-var a = ['dog', 'cat', 'hen'];
-a[100] = 'fox';
-console.log(a);
+// var a = ['dog', 'cat', 'hen'];
+// a[100] = 'fox';
+// console.log(a);
+
+// let animals = [{ type: 'lion' }, 'tiger'];
+// let clones = animals.slice();
+
+// clones[0].type = 'bear';
+// clones[1] = 'sheep';
+
+// console.log(animals);
+// console.log(animals[0].type, clones[0].type);
+// console.log(animals[1], clones[1]);
