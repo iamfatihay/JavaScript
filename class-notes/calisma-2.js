@@ -45,3 +45,33 @@
 // console.log(animals);
 // console.log(animals[0].type, clones[0].type);
 // console.log(animals[1], clones[1]);
+
+
+// let cat = { type: "lion" };
+// cat.size = "large";
+// console.log(cat);
+
+// let copyCat = { ...cat };
+// cat.type = "tiger";
+// console.log(copyCat.type, copyCat.size);
+
+
+
+// let cat = Object.create({ type: 'lion' });
+// cat.size = 'large';
+// console.log(cat);
+
+// let copyCat = { ...cat };
+// console.log(copyCat);
+// cat.type = 'tiger';
+// console.log(copyCat.type, copyCat.size);
+
+console.log(sum(10, 20)); 
+diff(10, 20);
+function sum(x, y) {
+  return x + y;
+}
+
+let diff = function (x, y) {
+  return x - y;
+};
